@@ -184,7 +184,7 @@ assign [class="chrome|Brave|firefox|Chromium"] $workspace2
 assign [class="Hexchat"] $workspace3
 assign [class="TelegramDesktop"] $workspace3
 assign [class="vlc"] $workspace5
-#assign [class="Thunar"] $workspace6
+assign [class="Thunar"] $workspace6
 #assign [class="VirtualBox"] $workspace6
 assign [class="qBittorrent"] $workspace8
 #assign [class="Snes9x-gtk"] $workspace9
@@ -295,4 +295,3 @@ exec --no-startup-id compton --config ~/.config/compton/compton.conf &
 #exec --no-startup-id firefox &
 exec --no-startup-id ~/Programz/Telegram/Telegram &
 exec --no-startup-id numlockx &
-
