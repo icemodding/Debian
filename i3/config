@@ -32,7 +32,8 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec rxvt-unicode
+assign [class="URxvt"] $workspace1
 
 # Terminal variable
 #set $term termite
@@ -45,6 +46,7 @@ bindsym $mod+Shift+q kill
 
 # Rofi
 bindsym $mod+d exec --no-startup-id rofi -show drun -theme /home/ice/.config/rofi/Arc-Dark.rasi -font "Ubuntu 9"
+
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -177,23 +179,22 @@ bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
-assign [class="subl"] $workspace1
-assign [class="chrome"] $workspace2
-assign [class="Brave"] $workspace2
-assign [class="firefox"] $workspace2
+assign [class="Sublime_text"] $workspace1
+assign [class="chrome|Brave|firefox|Chromium"] $workspace2
 assign [class="Hexchat"] $workspace3
 assign [class="TelegramDesktop"] $workspace3
 assign [class="vlc"] $workspace5
 #assign [class="Thunar"] $workspace6
 #assign [class="VirtualBox"] $workspace6
-#assign [class="qBittorrent"] $workspace8
+assign [class="qBittorrent"] $workspace8
 #assign [class="Snes9x-gtk"] $workspace9
 #assign [class="Gens"] $workspace9
 #assign [class="Pcsxr"] $workspace9
-#assign [class="simplescreenrecorder"] $workspace10
+assign [class="SimpleScreenRecorder"] $workspace10
 #for_window [class="Spotify"] floating enable move container to workspace $workspace4
-#assign [class="gnome-terminal"]
-for_window [class="Gimp"] floating enable move container to workspace $workspace7
+#for_window [class="Gimp"] floating enable move container to workspace $workspace7
+assign [class="Gimp"] $workspace7
+for_window [class="Gimp"] floating enable
 #for_window [window_role="gimp-dock"] floating disable; move left; resize shrink width 80px
 #for_window [window_role="gimp-toolbox"] floating disable; move right; resize set 654px 262px
 
@@ -233,8 +234,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # variables de colores
-set $bg-color            #262d38
-set $inactive-bg-color   #262d38
+set $bg-color            #404552
+set $inactive-bg-color   #404552
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
@@ -249,11 +250,10 @@ client.urgent $urgent-bg-color $urgent-bg-color $text-color #00ff00
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
         #position top
-        font pango:Font Awesome 5 Free 8
         colors {
-                background $bg-colorx
+                background $bg-color
                 separator #757575
                 #                  border             background         text
                 focused_workspace  $bg-color          $bg-color          $text-color
@@ -274,7 +274,7 @@ exec --no-startup-id volumeicon &
 # Background:
 # Nitrogen
 # exec --no-startup-id nitrogen --restore &
-exec_always --no-startup-id feh --bg-scale /home/ice/Picturz/155-2500x1406.jpg
+exec --no-startup-id feh --bg-scale /home/ice/Picturz/155-2500x1406.jpg2
 
 # Idioma
 exec --no-startup-id setxkbmap -layout latam &
@@ -288,7 +288,11 @@ exec --no-startup-id setxkbmap -layout latam &
 # Compton
 exec --no-startup-id compton --config ~/.config/compton/compton.conf &
 
+# .Xresources
+#exec --no-startup-id xrdb -merge ~/.Xresources
+
 # Autostart
 #exec --no-startup-id firefox &
 exec --no-startup-id ~/Programz/Telegram/Telegram &
 exec --no-startup-id numlockx &
+
