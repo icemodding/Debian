@@ -180,9 +180,11 @@ bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
 assign [class="Sublime_text"] $workspace1
-assign [class="chrome|Brave|firefox|Chromium"] $workspace2
+assign [class="chrome"] $workspace2
+assign [class="Brave|firefox|Google-chrome"] $workspace2
+#assign [class="firefox"] $workspace2
 assign [class="Hexchat"] $workspace3
-assign [class="TelegramDesktop"] $workspace3
+assign [class="TelegramDesktop|discord"] $workspace3
 assign [class="vlc"] $workspace5
 assign [class="Thunar"] $workspace6
 #assign [class="VirtualBox"] $workspace6
@@ -190,7 +192,7 @@ assign [class="qBittorrent"] $workspace8
 #assign [class="Snes9x-gtk"] $workspace9
 #assign [class="Gens"] $workspace9
 #assign [class="Pcsxr"] $workspace9
-assign [class="SimpleScreenRecorder"] $workspace10
+#assign [class="simplescreenrecorder"] $workspace10
 #for_window [class="Spotify"] floating enable move container to workspace $workspace4
 #for_window [class="Gimp"] floating enable move container to workspace $workspace7
 assign [class="Gimp"] $workspace7
@@ -234,8 +236,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # variables de colores
-set $bg-color            #404552
-set $inactive-bg-color   #404552
+set $bg-color            #36454f
+set $inactive-bg-color   #36454f
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
@@ -274,7 +276,7 @@ exec --no-startup-id volumeicon &
 # Background:
 # Nitrogen
 # exec --no-startup-id nitrogen --restore &
-exec --no-startup-id feh --bg-scale /home/ice/Picturz/155-2500x1406.jpg2
+exec --no-startup-id feh --bg-scale /home/ice/Picturz/155-2500x1406.jpg
 
 # Idioma
 exec --no-startup-id setxkbmap -layout latam &
@@ -289,9 +291,9 @@ exec --no-startup-id setxkbmap -layout latam &
 exec --no-startup-id compton --config ~/.config/compton/compton.conf &
 
 # .Xresources
-#exec --no-startup-id xrdb -merge ~/.Xresources
+exec --no-startup-id sleep 1 && xrdb -merge ~/.Xresources
 
 # Autostart
 #exec --no-startup-id firefox &
 exec --no-startup-id ~/Programz/Telegram/Telegram &
-exec --no-startup-id numlockx &
+exec --no-startup-id sleep 2 && numlockx &
