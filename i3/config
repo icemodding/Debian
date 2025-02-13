@@ -295,5 +295,5 @@ exec --no-startup-id sleep 1 && xrdb -merge ~/.Xresources
 
 # Autostart
 #exec --no-startup-id firefox &
-exec --no-startup-id ~/Programz/Telegram/Telegram &
+exec --no-startup-id ~/Programs/Telegram/Telegram &
 exec --no-startup-id sleep 2 && numlockx &
