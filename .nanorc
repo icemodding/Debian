@@ -1,0 +1,5 @@
+include "/usr/share/nano/debian.nanorc" # es el específico para archivos de Debian
+include "/usr/share/nano/nanorc.nanorc" # es el default de nano
+include "/usr/share/nano/yaml.nanorc"
+include "/usr/share/nano/sh.nanorc"
+include "/usr/share/nano/autoconf.nanorc"
