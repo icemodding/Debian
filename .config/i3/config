@@ -108,6 +108,7 @@ bindsym $mod+a focus parent
 # Screenshot
 #set $screenshot --no-startup-id gnome-screenshot
 set $screenshot-media --no-startup-id gnome-screenshot -i
+for_window [class="Gnome-screenshot"] floating enable
 
 #bindsym Print exec $screenshot
 #bindsym Shift+Print exec $screenshot-media
