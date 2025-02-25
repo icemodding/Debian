@@ -276,8 +276,6 @@ hide_edge_borders both
 exec --no-startup-id volumeicon &
 
 # Background:
-# Nitrogen
-# exec --no-startup-id nitrogen --restore &
 exec --no-startup-id feh --bg-scale /home/ice/Pictures/662729-dark-wallpaper-collection.png
 
 # Idioma
@@ -291,5 +289,6 @@ exec --no-startup-id picom --config ~/.config/picom/picom.conf &
 
 # Autostart
 #exec --no-startup-id firefox &
-exec --no-startup-id ~/Programs/Telegram/Telegram &
+#exec --no-startup-id ~/Programs/Telegram/Telegram &
 exec --no-startup-id sleep 2 && numlockx &
+exec --no-startup-id xrandr --output HDMI-A-0 --scale 1x1 --panning 1360x768
