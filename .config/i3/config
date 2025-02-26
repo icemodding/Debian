@@ -49,7 +49,6 @@ bindsym $mod+Shift+q kill
 # Rofi
 bindsym $mod+d exec --no-startup-id rofi -show drun -theme /usr/share/rofi/themes/Arc-Dark.rasi -font "Ubuntu 9"
 
-
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 ## installed.
@@ -126,8 +125,8 @@ bindsym $mod+Shift+m floating enable; border none; resize set 695px 267px; stick
 #bindsym XF86AudioMute        exec --no-startup-id pamixer -t
 
 # mocp
-# run mocp
-#bindsym $mod+m exec $term -e mocp
+bindsym $mod+Shift+n exec alacritty --class=mocp-terminal -e mocp
+for_window [class="mocp-terminal"] floating enable; move container to workspace $workspace10
 
 # Control Songs
 #bindsym XF86AudioPlay  exec --no-startup-id mocp -G
@@ -144,13 +143,13 @@ for_window [class="gnome-calculator"] floating enable
 set $workspace1 "1: "
 set $workspace2 "2: "
 set $workspace3 "3: "
-set $workspace4 "4: "
+set $workspace4 "4: "
 set $workspace5 "5: "
 set $workspace6 "6: "
 set $workspace7 "7: "
 set $workspace8 "8: "
 set $workspace9 "9: "
-set $workspace10 "10: "
+set $workspace10 "10: "
 
 # Desplazar entre workspaces
 bindsym $mod+Home workspace $workspace1
@@ -186,17 +185,12 @@ assign [class="Sublime_text"] $workspace1
 assign [class="Brave|firefox|Google-chrome"] $workspace2
 #assign [class="firefox"] $workspace2
 assign [class="Hexchat"] $workspace3
-assign [class="TelegramDesktop|discord"] $workspace3
+assign [class="TelegramDesktop"] $workspace3
+assign [class="discord"] $workspace4
 assign [class="vlc"] $workspace5
 assign [class="Thunar"] $workspace6
-#assign [class="VirtualBox"] $workspace6
 assign [class="qBittorrent"] $workspace8
-#assign [class="Snes9x-gtk"] $workspace9
-#assign [class="Gens"] $workspace9
-#assign [class="Pcsxr"] $workspace9
-#assign [class="simplescreenrecorder"] $workspace10
-#for_window [class="Spotify"] floating enable move container to workspace $workspace4
-#for_window [class="Gimp"] floating enable move container to workspace $workspace7
+assign [class="simplescreenrecorder"] $workspace10
 assign [class="Gimp"] $workspace7
 for_window [class="Gimp"] floating enable
 #for_window [window_role="gimp-dock"] floating disable; move left; resize shrink width 80px
@@ -275,7 +269,6 @@ hide_edge_borders both
 # Icono de Volumen
 exec --no-startup-id volumeicon &
 
-# Background:
 exec --no-startup-id feh --bg-scale /home/ice/Pictures/662729-dark-wallpaper-collection.png
 
 # Idioma
@@ -291,4 +284,5 @@ exec --no-startup-id picom --config ~/.config/picom/picom.conf &
 #exec --no-startup-id firefox &
 #exec --no-startup-id ~/Programs/Telegram/Telegram &
 exec --no-startup-id sleep 2 && numlockx &
+#Resolución  con un 10% renderizado
 exec --no-startup-id xrandr --output HDMI-A-0 --scale 1x1 --panning 1360x768
