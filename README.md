@@ -1,2 +1,3 @@
 Aquí voy a dejar toda la configuración que tengo en mi Debian 
-![Debian Testing](https://github.com/user-attachments/assets/6c7f6577-0e97-4dbf-985f-ad02ed3ccb12)
+
+![Captura de pantalla de 2025-03-09 22-41-34](https://github.com/user-attachments/assets/a6efd3c3-b19f-47b8-9f29-9270a762b94c)
