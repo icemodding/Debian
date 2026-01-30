@@ -33,7 +33,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec rxvt-unicode
-#ssign [class="URxvt"] $workspace1
+#assign [class="URxvt"] $workspace1
 bindsym $mod+Return exec alacritty
 assign [class="Alacritty"] $workspace1
 
