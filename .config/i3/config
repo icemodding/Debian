@@ -262,19 +262,20 @@ hide_edge_borders both
 # Red
 #exec --no-startup-id nm-applet
 
-# Icono de Volumen
-exec --no-startup-id pasystray
+#Resolución  con un 10% renderizado
+exec --no-startup-id autorandr --change
 
 #Wallpaper
 exec --no-startup-id feh --bg-scale /home/ice/Pictures/debian-skull1v1.png
 
 # Picom
-exec --no-startup-id picom --config ~/.config/picom/picom.conf
+#exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
+
+# Icono de Volumen
+exec --no-startup-id pasystray
 
 # Autostart
 exec --no-startup-id brave-browser
 exec --no-startup-id ~/Programs/Telegram/Telegram
 exec_always --no-startup-id numlockx on
-
-#Resolución  con un 10% renderizado
-exec --no-startup-id autorandr --change
