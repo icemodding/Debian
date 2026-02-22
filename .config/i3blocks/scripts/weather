@@ -1,0 +1,24 @@
+#!/bin/bash
+
+CACHE="/tmp/weather_i3blocks"
+TTL=900
+
+# Usar cache si no expiró
+if [ -f "$CACHE" ]; then
+    age=$(( $(date +%s) - $(stat -c %Y "$CACHE") ))
+    if [ $age -lt $TTL ]; then
+        cat "$CACHE"
+        exit 0
+    fi
+fi
+
+# Obtener sensación térmica real
+data=$(curl -sf "https://wttr.in/-26.83,-65.21?format=%c+%f")
+
+# Si falla, usar cache viejo
+if [ -z "$data" ]; then
+    [ -f "$CACHE" ] && cat "$CACHE"
+    exit 0
+fi
+
+echo "$data" | tee "$CACHE"
