@@ -1,0 +1,48 @@
+#!/bin/bash
+
+IFACE=$(ip route | awk '/default/ {print $5; exit}')
+
+if [ -z "$IFACE" ]; then
+    echo "OFF"
+    echo "Sin interfaz"
+    echo "#FF0000"
+    exit 0
+fi
+
+STATE=$(cat /sys/class/net/$IFACE/operstate 2>/dev/null)
+
+if [ "$STATE" != "up" ]; then
+    echo "DOWN"
+    echo "$IFACE desconectada"
+    echo "#FF0000"
+    exit 0
+fi
+
+IP=$(ip -4 addr show "$IFACE" | awk '/inet / {print $2}' | cut -d/ -f1)
+
+PATH_FILE="/dev/shm/net-${IFACE}"
+
+read RX < "/sys/class/net/$IFACE/statistics/rx_bytes"
+read TX < "/sys/class/net/$IFACE/statistics/tx_bytes"
+TIME=$(date +%s)
+
+if [ ! -f "$PATH_FILE" ]; then
+    echo "$TIME $RX $TX" > "$PATH_FILE"
+    echo "$IP"
+    exit 0
+fi
+
+read OLD_TIME OLD_RX OLD_TX < "$PATH_FILE"
+echo "$TIME $RX $TX" > "$PATH_FILE"
+
+DIFF_TIME=$((TIME - OLD_TIME))
+[ "$DIFF_TIME" -gt 0 ] || exit 0
+
+RX_RATE=$(( (RX - OLD_RX) / DIFF_TIME ))
+TX_RATE=$(( (TX - OLD_TX) / DIFF_TIME ))
+
+RX_MB=$(echo "scale=2; $RX_RATE/1048576" | bc)
+TX_MB=$(echo "scale=2; $TX_RATE/1048576" | bc)
+
+echo "$IP ↓${RX_MB} ↑${TX_MB}"
+echo "$IFACE | $IP"
