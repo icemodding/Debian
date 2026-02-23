@@ -1,0 +1,41 @@
+#!/bin/bash
+
+case "$BLOCK_BUTTON" in
+    1) pamixer -t ;;        # click = mute
+    4) pamixer -i 5 ;;      # scroll up
+    5) pamixer -d 5 ;;      # scroll down
+esac
+
+vol=$(pamixer --get-volume)
+mute=$(pamixer --get-mute)
+
+# Icono según nivel
+if [ "$mute" = true ]; then
+    icon="🔇"
+elif [ "$vol" -ge 70 ]; then
+    icon="🔊"
+elif [ "$vol" -ge 30 ]; then
+    icon="🔉"
+else
+    icon="🔈"
+fi
+
+# Barra visual (10 bloques)
+bars=$((vol / 10))
+bar=$(printf "%0.s█" $(seq 1 $bars))
+empty=$(printf "%0.s░" $(seq 1 $((10-bars))))
+
+# Color dinámico
+if [ "$mute" = true ]; then
+    color="#FF0000"
+elif [ "$vol" -ge 70 ]; then
+    color="#4CAF50"
+elif [ "$vol" -ge 30 ]; then
+    color="#FFC107"
+else
+    color="#FF9800"
+fi
+
+echo "$icon $vol% [$bar$empty]"
+echo "$icon $vol%"
+echo "$color"
