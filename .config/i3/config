@@ -256,9 +256,6 @@ bar {
 # Borders
 hide_edge_borders both
 
-# Red
-#exec --no-startup-id nm-applet
-
 #Resolución  con un 10% renderizado
 exec --no-startup-id autorandr --change
 
