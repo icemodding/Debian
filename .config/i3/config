@@ -31,8 +31,6 @@ font pango:Inter 9
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec rxvt-unicode
-#assign [class="URxvt"] $workspace1
 bindsym $mod+Return exec alacritty
 assign [class="Alacritty"] $workspace1
 
